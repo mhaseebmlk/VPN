@@ -20,6 +20,9 @@
  * is to be taken "as is" and without any kind of warranty, implicit or   *
  * explicit. See the file LICENSE for further details.                    *
  *************************************************************************/ 
+/**************************************************************************
+ * This is the UDP version of the tunelling program.                      *
+ *************************************************************************/ 
 
 #include <stdio.h>
 #include <stdlib.h>
