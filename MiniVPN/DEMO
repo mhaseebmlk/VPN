@@ -1,6 +1,0 @@
-1. setup everything as written in README. assuming the gateways are still intact and you dont have to put in the port forwarding rules again
-2. first run the vpn normally using the -v verbose flag. verify that you can ssh fron virtualhosta1 to virtualhostb1
-3. now re run the vpn with -v -t 1 flags (testnum==1 for changing hash and dropping packets)
-	now, the host at which this was set the packets should be dropped and communication should not happen. verify by showing verbose printouts!
-
-4. can also show forged certificates test
