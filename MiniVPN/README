@@ -1,0 +1,42 @@
+How to run the VPN
+=================
+
+- Make sure that both the Gatway VMs have the same folder called 'MiniVPN' 
+and make sure you cd into this direcotry
+- Ensure that the correct port forwarding rules have been set up for the VMs
+on the physical machines.
+	- SSL sockey port number is: 20407
+	- UDP tunnel port number is: 20405
+
+On GatewayB (server)
+--------------------
+- On line# 701 (strncpy(remote_ip,MC02_IP,15);), change MC02_IP to MC03_IP
+- Run make to compile the code
+- Execute the command sudo ./minivpn -h to print usage options of the program
+- Execute the command sudo ./minivpn -s to run as server and enter 'server'
+as the pass phrase when prompted
+	- You can add more flags depending on if you want to print out verbose
+	print outs or if you want to run a specific test.
+
+<Now move on to the GatewayA (client)>
+
+- Open another terminal tab and execute the command bash bash simpletun_config_GatewayB.sh 
+	- This will set up the virtual network interface
+
+<Now go back to GatewayA (client)>
+
+On GatewayA (client)
+--------------------
+- Make sure that line 701 has MC02_IP, not MC03_IP
+- Run make to compile the code
+- Execute the command sudo ./minivpn -c <mc02 ip address> to run the program
+as the client
+- Open another terminal tab and execute the command bash bash simpletun_config_GatewayA.sh 
+	- This will set up the virtual network interface
+
+<Now go back to GatewayB> 
+
+- Now execute the command bash connect_vhost_a1.sh
+	- This will ssh into the VirtualHostA1
+- Once inside, you can now ping or ssh into VirtualHostB1
+	- The IP of VirtualHostB1 as of now is 10.0.20.124
